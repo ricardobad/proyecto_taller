@@ -1,56 +1,71 @@
+import java.util.Scanner;
+import java.util.jar.Attributes.Name;
+
 import javax.sound.sampled.SourceDataLine;
 import javax.swing.JOptionPane;
-   
-            //HAY QUE HACER UN DEFAULT POR SI SELECCIONA OTRA OPCION QUE NO ESTE EN EL MENU
-            // TAMBIEN UN METODO QUE INDIQUE QUE TIENE QUE INGRESAR DATOS CLIENTE Y 
-            //VEHICULO ANTES DE PASAR AL CLASE MECANICO
-
-            //CREAR LAS CLASES MECANICA 1,2,3 
 
 public class App {
     public static void main(String[] args) {
 
-        String op= "";
-        
-        JOptionPane.showMessageDialog(null,"Bienvenido al Taller Los Patitos");
-        
-        Cliente nm = new Cliente();
-        nm.leerdatos();
-        System.out.println("Su nombre es "+ Cliente.getNombre());
-        JOptionPane.showMessageDialog( null,"Su nombre es "+ Cliente.getNombre() );
-        
+        String op;
 
-        op = JOptionPane.showInputDialog("SELECCIONE UNA OPCION: " +
-         "\n 1- Ingresar Datos del Cliente \n 2- Ingresar Datos del Vehiculo " +
-         "\n 3- Si necesita Servicio de Revision  \n4- Si necesita Servicio de Mantenimiento" +
-         "\n 5- Si necesita Servicio de Reparacion \n 6- Salir");
+        JOptionPane.showMessageDialog(null, "Bienvenido al Taller Los Patitos" + "\n Digite los datos del cliente");
+        // Creé una variable que se llama name para poder inyectarla al setNombre de
+        // Persona
 
-         switch (op.toLowerCase()){   
-             case "1":{
-                 System.out.println("INGRESAR DATOS: ");  //AQUI SE LLAMA A LA CLASE CLIENTE
-             break;}
+        String name = JOptionPane.showInputDialog(null, "Digite nombre de Cliente : ");
+        Persona.setNombre(name);
+        Cliente name1 = new Cliente(name);
+        int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite Cedula sin guiones : "));
+        Persona.setCedula(id);
+        int phone = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite numero telefono : "));
+        Persona.setTelefono(phone);
+        String email = JOptionPane.showInputDialog(null, "Digite el correo electronico : ");
+        Persona.setCorreo(email);
+        String address = JOptionPane.showInputDialog(null, "Digite direccion física : ");
+        Persona.setDireccion(address);
+        String brand = JOptionPane.showInputDialog(null, "Digite marca de Vehiculo: ");
+        Cliente.setMarca(brand);
+        String idcar = JOptionPane.showInputDialog(null, "Digite placa de Vehiculo: ");
+        Cliente.setPlaca(idcar);
+        String issue = JOptionPane.showInputDialog(null, "Digite Descripcion problema de Vehiculo: ");
+        Cliente.setProblemaVehiculo(issue);
+        JOptionPane.showMessageDialog(null,
+                        "DATOS DEL CLIENTE :" + "\n Nombre: " + name + "\n Cedula: " + id + "\n Telefono: " + phone
+                                + "\n Correo Electronico: " + email + "\n Direccion: " + address
+                                + "\n DATOS DE VEHICULO: " + "\n Marca: " + brand + "\n Placa: " + idcar
+                                + "\n Problemas del vehiculo: " + issue);
 
-             case "2":{
-                 System.out.println("INGRESAR DATOS DEL VEHICULO: ");  // AQUI SE LLAMA A LA CLASE VEHICULO
-             break;}
+        do {
+            op = JOptionPane.showInputDialog("SELECCIONE UNA OPCION: "
+                    + "\n 1- Servicio de Revision Básica \n 2- Servicio de Mantenimiento Rutinario "
+                    + "\n 3- Servicio de Reparación   \n 4- Salir");
 
-             case "3":{
-                 System.out.println("SERVICIO DE REVISION: "); // AQUI LA CLASE MECANICA 1
-             break;}
+            switch (op.toLowerCase()) {
+            case "1": {
+                System.out.println("Servicio de Revision Básica : "); // SE INVOCA EL METODO REVISION
 
-             case "4":{
-                 System.out.println("SERVICIO DE MANTENIMIENTO: ");  // AQUI LA CLASE MECANICA2
-             break;}
+                Servicio.Revision();
 
-             case "5":{
-                 System.out.println("SERVICIO DE REPARACION"); // AQUI LA CLASE MECANICA3
-             break;}
-             
-             case "6":{
-                 
+                break;
+            }
 
-            break; }       
-          }
-        
+            case "2": {
+                System.out.println("Servicio de Mantenimiento Rutinario: "); // SE INVOCA EL METODO MANTENIMIENTO
+                Servicio.Mantenimiento(0);
+
+                break;
+            }
+
+            case "3": {
+                System.out.println("Servicio de Reparacion: "); // SE INVOCA EL METODO DE REPARACION
+                Servicio.Reparacion();
+                
+                break;
+            }
+
+            }
+        } while (!op.equals("4"));
+
     }
 }
