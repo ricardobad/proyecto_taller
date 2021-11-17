@@ -7,6 +7,10 @@ public class Persona {
     private String correo;
     private String direccion;
     private int cedula;
+    
+    public Persona(){
+    }
+    
     public Persona(String nombre, int telefono, String correo, String direccion, int cedula) {
         this.nombre = nombre;
         this.telefono = telefono;
