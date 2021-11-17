@@ -1,41 +1,51 @@
 import javax.swing.JOptionPane;
 
-public class Cliente {
-    private static String Nombre;
-    private int Telefono;
+public class Cliente extends Persona {
 
-    
+    public static final String email = null;
+    private String Marca;
+    private String Placa;
+    private String ProblemaVehiculo;
 
-    /*public Cliente(String Nombre, int Telefono) {
-        this.setNombre(Nombre);
-        this.setTelefono(Telefono);
-    }*/
-
-
-    public static String getNombre() {
-        return Nombre;
+    public Cliente(String nombre) {
+        super(nombre);
     }
 
-    public void setNombre(String nombre) {
-        this.Nombre = nombre;
+    public Cliente(int telefono, String correo, String direccion, int cedula, String marca, String placa,
+            String problemaVehiculo) {
+        super(problemaVehiculo, telefono, correo, direccion, cedula);
+        Marca = marca;
+        Placa = placa;
+        ProblemaVehiculo = problemaVehiculo;
     }
 
-    public int getTelefono() {
-        return Telefono;
+    public String getMarca() {
+        return Marca;
     }
 
-    public void setTelefono(int telefono) {
-        this.Telefono = telefono;
+    public static void setMarca(String marca) {
+        // Marca = marca;
     }
-  
-    //Metodo para pedir datos al usuario
-    public void leerdatos(){
 
-    Nombre=JOptionPane.showInputDialog("Digite su nombre completo con apellidos ");
-    Telefono=Integer.parseInt(JOptionPane.showInputDialog("Digite su numero de telefono :"));
-} 
+    public String getPlaca() {
+        return Placa;
+    }
 
+    public static void setPlaca(String placa) {
+        // Placa = placa;
+    }
 
-    
-    
+    public String getProblemaVehiculo() {
+        return ProblemaVehiculo;
+    }
+
+    public static void setProblemaVehiculo(String problemaVehiculo) {
+        // ProblemaVehiculo = problemaVehiculo;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente [Marca=" + Marca + ", Placa=" + Placa + ", ProblemaVehiculo=" + ProblemaVehiculo + "]";
+    }
+
 }
