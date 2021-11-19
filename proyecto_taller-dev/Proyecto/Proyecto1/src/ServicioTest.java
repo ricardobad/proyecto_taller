@@ -12,8 +12,8 @@ public class ServicioTest {
     public void testMantenimiento(){
         assertEquals(0, 0);
     }
-    
-  
-
-
+    @Test
+    public void testReparacion(){
+        assertEquals(0, 0);
+    }
 }
